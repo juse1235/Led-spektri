@@ -1,5 +1,7 @@
 # Led-spectrum
 
+![GitHub Logo](/Kuvat/Kuva1.png)
+
 Tuntuiko normaali haalarisalama liian yksinkertaiselta? Epäiletkö, että juotettavia LEDejä ei voi olla liikaa? Oletko aina haaveillut haalarimerkistä, jonka nähtyään kanssaopiskelijat pyörtyvät ihastuksesta?
 
 Mikäli näin on, olet selvästikin motivoitunut nousemaan seuraavalle tasolle yöllisessä yökerhojen ja pystärien bling-bling-loisteessa. Tämä tanssilattioiden katseenvangitsija tarjoaa ainutkertaisen mahdollisuuden turruttaa itsensä vinoon juottuneille komponenteille ja v*tutukselle. Älä missaa tilaisuutta! Minä en missaisi.
@@ -42,6 +44,8 @@ Oskillaattori on geneerinen 16 megahertsin malli sisäänrakennetulla kuormakapa
 
 Yksinkertaisuuden vuoksi mikrofonin kanssa päädyttiin vahvistimen sisältävään valmiiseen moduuliin. Moduuli tuottaa analogista signaalia, joka välitetään Atmegan ADC-pinniin, ja josta Atmega ottaa näytepätkän.
 
+![GitHub Logo](/Kuvat/Kuva2.png)
+Kuten tarkimmat jo saattavat huomata, tekijä ei osannut tekovaiheessa tehdä ihmisystävällisiä kytkentöjä.
 
 ## Piirilevy
 Tilanpuute oli valtava ongelma varsinaisen piirilevyn suunnittelun kanssa. Tästä syystä kaikkia komponentteja ei voitu sijoittaa levyn takapuolelle helpon korjattavuuden takaamiseksi, vaan osa komponenteista ja mikrofonimoduuli oli juotettava etupuolelle.
@@ -54,3 +58,36 @@ Muiden pintaliitoskomponenttien juottamisessa ei ole varsinaisesti mitään main
 Kun pintaliitoskomponentit on juotettu, J7 ja J6 on yhdistettävä hyppylangalla. Miksi näin? Tilanpuutteen takia maatasoa ei ole muuten yhdistetty kontrollerin yläpuolelle ollenkaan. Onneksi tämä on matalan taajuuden sovellutus, joten tämmöiset temput ovat sallittuja...
 
 Etupuolella on mainittava ledien juottamisesta sen verran, että pitkä jalka (anodi) menee ympyrän muotoiseen juotospisteeseen, ja lyhyt jalka (katodi) menee neliön muotoiseen juotospisteeseen. Kokemuksen jykevällä rintaäänellä voi sanoa, että juottakaa ledit myös mieluummin etupuolelle kuin takapuolelle. Mikrofonimoduulin ja piirilevyn väliin on suositeltavaa laittaa jotakin eristettä oikosulun välttämiseksi. Tantaalikondensaattorin viivalla merkitty pääty menee aina positiiviseen jännitteeseen kaiken järjen vastaisesti (etupuolen 10 mikrofaradin konkka). 
+
+![GitHub Logo](/Kuvat/Kuva3.png)
+Levyn takapuoli
+
+![GitHub Logo](/Kuvat/Kuva4.png)
+Levyn etupuoli
+
+
+## Ohjelmointi
+Ohjelmointi tapahtuu ISP-väylän kautta. ArduinoISP on tässä suositeltava ohjelmoija. Piirilevylle jätettiin ohjelmointipaikat myös UART-ohjelmointia varten, mutta niitä ei tässä tapauksessa tarvita ollenkaan. Tulevaisuuden generaatioista ne voikin poistaa tilaa säästääkseen.
+
+![GitHub Logo](/Kuvat/Kuva5.png)
+
+##### Komennot Windowsille:
+
+avrdude -C "C:\Program Files (x86)\Arduino\hardware\tools\avr\etc\avrdude.conf" -c avrisp -p m328pb -B3 -P COM7 -b 19200 -U flash:w:merkki.hex
+
+avrdude -C "C:\Program Files (x86)\Arduino\hardware\tools\avr\etc\avrdude.conf" -c avrisp -p m328pb -B3 -P COM7 -b 19200 -U lfuse:w:0xff:m -U hfuse:w:0xde:m efuse:w:0x05:m
+
+Jos avrdude.exe:ä ei ole asetettu Windowsin ympäristömuuttujiin, on edellä mainitut komennot ajettava ”Arduino\hardware\tools\avr\bin”-kansiosta. Polut ja oikea sarjaportti pitää toki tarkistaa tapauskohtaisesti.
+
+##### Testaamattomat komennot Linuxille ja Macille:
+
+avrdude -c avrisp -p m328pb -B3 -P /dev/ttyUSB0 -b 19200 -U flash:w:merkki.hex
+
+avrdude -c avrisp -p m328pb -B3 -P /dev/ttyUSB0 -b 19200 -U lfuse:w:0xff:m -U hfuse:w:0xde:m efuse:w:0x05:m
+
+Atmel Studio 7:llä tehty koodi ei ole mitään kauneinta katseltavaa, mutta joka tapauksessa se toimii. ChaN AVR FFT -kirjasto on otettu lievästi editoituna AVRFreaks-foorumilta ( https://www.avrfreaks.net/forum/64-point-fft-elm-chan-library), ja kirjasto löytyy myös erilaisina variaatioina eri puolilta internetiä. Alun perin koodi on oletettavasti julkaistu Elm-chanin kotisivulla (http://elm-chan.org/works/akilcd/report_e.html)
+
+## Fyysinen rakenne
+Kuumaliimaa kannattaa hyödyntää ainakin varsinaisen mikrofonielementin ja mikrofonimoduulipiirilevyn liitoskohdassa, sillä isku taittaa mikrofonin helposti. Lisäksi käyttöjännitetuloon on hyvä tehdä liimalla vedonpoisto.
+Haalarimerkkiin integroimiseen ei ole suoria ohjeita, mutta on suositeltavaa tehdä painettuun merkkiin valmiit reiät. Mielikuvituksen ja insinööritaitojen käyttö on aiheellista, sillä ledien asentaminen merkin läpi haalarisalaman mukaisesti ei ole huollettavuuden takia järkevää.
+
