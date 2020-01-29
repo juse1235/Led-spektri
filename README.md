@@ -11,7 +11,7 @@ Komponentit
 | --------------- | ------ | -------------------------------------------------------- |
 | Atmega328PB-AU  |1       |	Myös 328P voi toimia, mutta vaatii muutoksia kääntäjään |
 | LED, 3 mm, jalallinen	|64 |	Ei värikoodia – käytä mielikuvitusta |
-| Transistori, SOT-23|16 |	Käytössä MMBT4401, ei erityisen tarkkaa mallista, hyvä kuitenkin kestää vähintään 20 mA < virtaa |
+| Transistori, SOT-23|16 |	Käytössä MMBT4401, ei suurempaa väliä mallista, hyvä kuitenkin kestää vähintään 20 mA virtaa |
 | Vastus, 0603 – 0805, 1+ kOhm | 16 |		Transistorien ohjaus |
 | Etuvastus, 0805	|8	| Kirkkauden säätö, 100 – 500 ohmia lienee hyvä, säätää myös virrankulutusta, tekijällä käytössä 300 ohmia |
 | Isohko vastus, noin 5 kOhm, 0603 |2	 | |
