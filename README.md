@@ -1,5 +1,4 @@
-# Led-spectrum
-
+# Led-spektri
 ![GitHub Logo](/Kuvat/Kuva1.png)
 
 Tuntuiko normaali haalarisalama liian yksinkertaiselta? Epäiletkö, että juotettavia LEDejä ei voi olla liikaa? Oletko aina haaveillut haalarimerkistä, jonka nähtyään kanssaopiskelijat pyörtyvät ihastuksesta?
