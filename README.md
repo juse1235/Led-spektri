@@ -14,7 +14,7 @@ Komponentit
 | LED, 3 mm, jalallinen	|64 |	Ei värikoodia – käytä mielikuvitusta |
 | Transistori, SOT-23|16 |	Käytössä MMBT3904, ei erityisen tarkkaa mallista |
 | Vastus, 0603 – 0805, 1+ kOhm | 16 |		Transistorien ohjaus |
-| Etuvastus, 0805	|8	| Kirkkauden säätö, 100 – 500 ohmia lienee hyvä, säätää myös virrankulutusta, suunnittelijalla käytössä 300 ohmia |
+| Etuvastus, 0805	|8	| Kirkkauden säätö, 100 – 500 ohmia lienee hyvä, säätää myös virrankulutusta, tekijällä käytössä 300 ohmia |
 | Isohko vastus, noin 5 kOhm, 0603 |2	 | |
 | Regulaattori, LP2985 – 3.3 |	1	| |
 | Kondensaattori, 100 nF, 0805|	1	| |
@@ -52,7 +52,7 @@ Tilanpuute oli valtava ongelma varsinaisen piirilevyn suunnittelun kanssa. Täst
 
 Yleinen ohje juottamiseen: juota ensin yksi komponentin nurkka kiinni niin, että komponentin muutkin juotoskohdat ovat paikallaan ja komponentti on oikeassa asennossa. Tämän jälkeen voi helposti juottaa loput paikat.
 
-Juottaminen on hyvä aloittaa mikrokontrollerista. Suunnittelija juotti piirin reippaalla juoksutteella ja reippaalla tinankäytöllä, jolloin myös kontrollerin jalat olivat juottuneet yhteen. Tämän jälkeen ylimääräinen tina oli helppoa imeä tinaimunauhalla.
+Juottaminen on hyvä aloittaa mikrokontrollerista. Tekijä juotti piirin reippaalla juoksutteella ja reippaalla tinankäytöllä, jolloin myös kontrollerin jalat olivat juottuneet yhteen. Tämän jälkeen ylimääräinen tina oli helppoa imeä tinaimunauhalla.
 
 Muiden pintaliitoskomponenttien juottamisessa ei ole varsinaisesti mitään mainittavaa. U2 alemmassa kuvassa on 3,3 voltin regulaattori.
 Kun pintaliitoskomponentit on juotettu, J7 ja J6 on yhdistettävä hyppylangalla. Miksi näin? Tilanpuutteen takia maatasoa ei ole muuten yhdistetty kontrollerin yläpuolelle ollenkaan. Onneksi tämä on matalan taajuuden sovellutus, joten tämmöiset temput ovat sallittuja...
